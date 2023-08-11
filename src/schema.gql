@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  email: String!
+  passwordHash: String!
+  isTfaEnabled: Boolean!
+  tfaSecret: String!
+}
+
+type MutationResult {
+  success: Boolean
+  error: Boolean
+}
+
+type GenerateQrCodeResult {
+  qrCodePath: String!
+}
+
+type LoginResult {
+  access_token: String!
+}
+
+type Query {
+  users: [User!]!
+  login(loginInput: AuthDto!): LoginResult!
+}
+
+input AuthDto {
+  email: String!
+  password: String!
+  tfaCode: String!
+}
+
+type Mutation {
+  createUser(userInput: AuthDto!): User!
+  changePassword(newPassword: String!): MutationResult!
+  generateQrCode: GenerateQrCodeResult!
+}
